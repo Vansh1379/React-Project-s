@@ -14,6 +14,7 @@ export function SearchBox({ updateInfo }) {
         const res = await fetch(`${ApiUrl}?q=${city}&appid=${API_KEY}&units=metric`);
         let jsonResponse = await res.json();
         console.log(jsonResponse);
+
         let result = {
             city: city,
             temp: jsonResponse.main.temp,
@@ -22,6 +23,7 @@ export function SearchBox({ updateInfo }) {
             humidity: jsonResponse.main.humidity,
             weather: jsonResponse.weather[0].description,
         };
+
         console.log(result);
         return result;
     }
@@ -42,7 +44,12 @@ export function SearchBox({ updateInfo }) {
     return (
         <div className='SearchBox'>
             <form onSubmit={onSubmit}>
-                <TextField id="city" label="City Name!" variant="standard" required value={city} onChange={CityName} />
+                <TextField id="city" color='success' sx={{
+                    input: { color: 'white' },
+                    label: { color: 'white' },
+                    '& .MuiInput-underline:before': { borderBottomColor: 'white' },
+                    '& .MuiInput-underline:after': { borderBottomColor: 'white' },
+                }} label="City Name" variant="standard" required value={city} onChange={CityName} />
                 <Button variant="contained" type='submit' endIcon={<SendIcon />} >
                     Search
                 </Button>
