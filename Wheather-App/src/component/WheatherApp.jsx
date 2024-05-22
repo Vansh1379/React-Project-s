@@ -12,6 +12,7 @@ export function WheatherApp() {
         weather: "haze",
     });
 
+    
     let updateInfo = (result) => {
         setWeatherInfo(result);
     }
